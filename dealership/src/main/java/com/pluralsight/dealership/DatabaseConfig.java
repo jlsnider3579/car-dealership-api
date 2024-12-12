@@ -1,13 +1,19 @@
 package com.pluralsight.dealership;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@Configuration
 public class DatabaseConfig {
+
     private static BasicDataSource dataSource;
 
+    @Bean
     public static BasicDataSource getDataSource(String url, String userName, String password) {
 
         // If the dataSource has not been initialized, create a new one
