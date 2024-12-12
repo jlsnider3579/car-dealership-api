@@ -1,5 +1,6 @@
 package com.pluralsight.dealership;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,9 +14,6 @@ public class DealershipApplication {
         ds.setPassword("yearup");
         ds.setUrl("jdbc:mysql://localhost:3306/dealership");
 
-        UserInterFace ui = new UserInterFace(ds);
-        ui.display();
     }
-
 }
 

@@ -1,3 +1,5 @@
+package com.pluralsight.dealership;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleDaoImpl implements  VehicleDao{
+public class VehicleDaoImpl implements VehicleDao {
     private DataSource dataSource;
     public VehicleDaoImpl(DataSource dataSource) {
         this.dataSource = dataSource;

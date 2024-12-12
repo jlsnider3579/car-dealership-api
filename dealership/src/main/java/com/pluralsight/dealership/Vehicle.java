@@ -1,3 +1,5 @@
+package com.pluralsight.dealership;
+
 public class Vehicle {
     private int vin;
     private int year;
@@ -55,7 +57,7 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
+        return "com.pluralsight.dealership.Vehicle{" +
                 "vin=" + vin +
                 ", year=" + year +
                 ", make='" + make + '\'' +
