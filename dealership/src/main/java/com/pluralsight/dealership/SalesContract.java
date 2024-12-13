@@ -30,13 +30,17 @@ public class SalesContract extends Contract{
     @Override
     double getTotalPrice() {
         // TODO ADD THE LOGIC TO GET TOTAL PRICE OF SALES CONTRACT
-        return 0;
+        Vehicle vehicleSold = getVehicleSold();
+        double total = vehicleSold.getPrice() + vehicleSold.getPrice() * salesTaxAmount + recordingFee + processingFee;
+        return total;
     }
 
     @Override
     double getMonthlyPayment() {
         // TODO ADD THE LOGIC TO GET TOTAL PRICE OF LEASE CONTRACT
-        return 0;
+        Vehicle vehicleSold = getVehicleSold();
+        double monthlyLoanRate = vehicleSold.getPrice() > 10000 ? .0425 : .0525;
+        return -1;
     }
 
     @Override
