@@ -2,15 +2,21 @@ package com.pluralsight.dealership;
 
 public abstract class Contract {
     private String date;
-    private String customerName;
+    private String firstName;
+    private String lastName;
     private String customerEmail;
     private Vehicle vehicleSold;
     private double totalPrice;
     private double monthlyPayment;
 
-    public Contract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Contract(String date, String firstName, String lastName, String customerEmail, Vehicle vehicleSold) {
         this.date = date;
-        this.customerName = customerName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
     }
@@ -19,8 +25,8 @@ public abstract class Contract {
         return date;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getCustomerEmail() {
@@ -37,7 +43,7 @@ public abstract class Contract {
     public String toString() {
         return "com.pluralsight.dealership.Contract{" +
                 "date='" + date + '\'' +
-                ", customerName='" + customerName + '\'' +
+                ", customerName='" + firstName + '\'' +
                 ", customerEmail='" + customerEmail + '\'' +
                 ", vehicleSold=" + vehicleSold +
                 ", totalPrice=" + totalPrice +

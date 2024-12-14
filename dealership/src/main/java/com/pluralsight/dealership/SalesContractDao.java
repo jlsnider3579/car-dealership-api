@@ -1,11 +1,11 @@
 package com.pluralsight.dealership;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface SalesContractDao {
-    List<SalesContract> findAllSalesContracts();
-    SalesContract findSalesContractById(int id);
+    ArrayList<SalesContract> findSalesContractById(int id);
     void addSalesContract(SalesContract salesContract);
-    void updateSalesContract(SalesContract salesContract);
-    void deleteSalesContract(int id);
+
 }
