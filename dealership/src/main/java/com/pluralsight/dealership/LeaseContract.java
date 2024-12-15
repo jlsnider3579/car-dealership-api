@@ -3,13 +3,14 @@ package com.pluralsight.dealership;
 public class LeaseContract extends Contract {
     private double expectedEndingValuePercent = 0.05;
     private double leaseFeePercent = 0.07;
-    private double monthlyPayment;
 
-    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
-        super(date, customerName, customerEmail, vehicleSold);
+    public LeaseContract(String date, String firstName, String lastName, String customerEmail, Vehicle vehicleSold) {
+        super(date, firstName, lastName, customerEmail, vehicleSold);
     }
 
+
     public double getExpectedEndingValuePercent() {
+        expectedEndingValuePercent = getVehicleSold().getPrice()/ 2;
         return expectedEndingValuePercent;
     }
 
@@ -35,7 +36,6 @@ public class LeaseContract extends Contract {
         return "LeaseContract{" +
                 "expectedEndingValuePercent=" + expectedEndingValuePercent +
                 ", leaseFeePercent=" + leaseFeePercent +
-                ", monthlyPayment=" + monthlyPayment +
                 '}';
     }
 }
