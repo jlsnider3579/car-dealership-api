@@ -1,5 +1,8 @@
 package com.pluralsight.dealership;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class VehicleDaoImpl implements VehicleDao {
     private DataSource dataSource;
+
+    @Autowired
     public VehicleDaoImpl(DataSource dataSource) {
         this.dataSource = dataSource;
 
@@ -226,6 +232,16 @@ public class VehicleDaoImpl implements VehicleDao {
             throw new RuntimeException(e);
         }
         return vehicleList;
+    }
+
+    @Override
+    public void addVehicle(Vehicle v) {
+
+    }
+
+    @Override
+    public void removeVehicle(int vin) {
+
     }
 
 

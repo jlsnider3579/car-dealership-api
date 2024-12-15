@@ -11,4 +11,6 @@ public interface VehicleDao {
     List<Vehicle> findVehiclesByColor(String userColor);
     List<Vehicle> findVehiclesByOdometer(int min, int max);
     List<Vehicle> findVehiclesByPrice(double min, double max);
+    void addVehicle(Vehicle v);
+    void removeVehicle(int vin);
 }

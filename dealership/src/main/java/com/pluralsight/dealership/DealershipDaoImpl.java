@@ -1,5 +1,9 @@
 package com.pluralsight.dealership;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,15 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DealershipDaoImpl implements DealershipDao{
-    private final String url;
-    private final String usr;
-    private final String password;
+    private DataSource dataSource;
 
-    public DealershipDaoImpl(String url, String usr, String password) {
-        this.url = url;
-        this.usr = usr;
-        this.password = password;
+    @Autowired
+    public DealershipDaoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
 
@@ -24,7 +26,7 @@ public class DealershipDaoImpl implements DealershipDao{
         List<Dealership> dealerships = new ArrayList<>();
         String query = "SELECT * FROM dealerships";
 
-        try (Connection connection = DatabaseConfig.getConnection(url,usr,password);
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 

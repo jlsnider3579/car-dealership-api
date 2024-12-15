@@ -1,5 +1,8 @@
 package com.pluralsight.dealership;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.sql.DataSource;
 import javax.xml.transform.Result;
 import java.sql.Connection;
@@ -8,9 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+@Component
 public class LeaseContractImpl implements LeaseContractDao{
     private DataSource dataSource;
 
+    @Autowired
     public LeaseContractImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
