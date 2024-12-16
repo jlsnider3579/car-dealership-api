@@ -332,11 +332,55 @@ public class VehicleDaoSqlImpl implements VehicleDao {
 
     @Override
     public void addVehicle(Vehicle v) {
+        try (Connection connection = dataSource.getConnection()) {
+            int vin = 0;
+            int year = 0;
+            String make = "";
+            String model = "";
+            String vehicleType = "";
+            String color = "";
+            int odometer = 0;
+            double price = 0.0;
 
+
+            PreparedStatement statement = connection.prepareStatement("""
+                    INSERT INTO vehicles VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+                    """);
+
+
+            statement.setInt(2, v.getVin());
+            statement.setInt(3, v.getYear());
+            statement.setString(4, v.getMake());
+            statement.setString(5, v.getModel());
+            statement.setString(6, v.getVehicleType());
+            statement.setString(7, v.getColor());
+            statement.setInt(8, v.getOdometer());
+            statement.setDouble(9, v.getPrice());
+
+            int rowsAffected = statement.executeUpdate();
+            System.out.println(rowsAffected + "rows inserted");
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void removeVehicle(int vin) {
 
+        try (Connection connection = dataSource.getConnection()){
+            PreparedStatement statement = connection.prepareStatement("""
+                    DELETE FROM vehicles WHERE vin = ?;
+                    """);
+
+            statement.setInt(1, vin);
+
+            int rowsAffected = statement.executeUpdate();
+            System.out.println(rowsAffected + "rows affected");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
